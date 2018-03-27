@@ -1,0 +1,37 @@
+
+mixin device
+  .device
+    .inner
+      .content 
+        .status.
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"/></svg>
+          Contacts
+        if block
+          block
+
+- names = ['Fred Lewis','Kelly Perry','Willie Hopkins','Guy Fowler','Howard Medina','Tony Carpenter','Dan Austin','Floyd Pena','Donald Fernandez','Roger Howard','Don Castillo','Jackson Gonzales','Tyler Rhodes','Eric Cunningham','Randy Morales']
+
+
+
++device
+  input(type="checkbox" id="top" tabindex="-1")
+  .tabs
+    .tab._1.active Favorites
+    .tab._2 Work
+    .tab._3 Family
+    
+  .list
+    - items = 15
+    while items--
+      .item(tabindex="-1" class=items>9?'active _'+(4 - items%5):'_'+(4 - items%5))
+        label(for="top").back.
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z"/></svg>
+        .impression
+          img(src="http://placehold.it/320x160/#{items%5}#{items%3}#{items%9}#{items%2+items%4}#{items%2 + 7}#{items%6}" alt="festival")
+        .image
+          img(src=`http://api.randomuser.me/portraits/men/${items}.jpg` alt="festival")
+        .info  #{names[items]} 
+          br
+          | #{names[items].toLowerCase().replace(/\s+/ig,'-')}@gmail.com 
+        .details 
+          | Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy
